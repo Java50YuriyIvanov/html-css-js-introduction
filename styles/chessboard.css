@@ -1,0 +1,29 @@
+.board {
+  display: flex;
+  flex-direction: row;
+}
+.section-class {
+  display: flex;
+  flex-direction: row;
+}
+.cell-white {
+  width: 5vw;
+  height: 5vw;
+  border: solid 1px black;
+  background-color: white;
+}
+.cell-black {
+  width: 5vw;
+  height: 5vw;
+  border: solid 2px gray;
+  background-color: black;
+}
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+html{
+  height: 100%;
+}
