@@ -12,38 +12,48 @@
     <header class="logo">
         <h2>Planes Gallery</h2>
     </header>
-    <main class="main-class">
+    <main class="main-class hidden">
         <section class="details-container">
-            <img src="images/plane1.jpg" class="details-image">
-            <span class="details-title">xxxxxxxxxxxxxxxx</span>
+            <audio id="audio" src=""></audio>
+            <div class="details-frame">
+                <button id="hide-button" onclick="hideDetails()">X</button>
+                <img src="images/plane1.jpg" class="details-image">
+                <span class="details-title">xxxxxxxxxxxxxxxx</span>
+
+            </div>
         </section>
         <ul class="thumbnails-list">
             <li class="thumbnails-item">
-                <a class="thumbnails-anchor" href="#">
+                <a class="thumbnails-anchor" href="#" data-details-image="images/plane1.jpg"
+                data-details-title="The most blue plane">
                     <img src="images/plane1.jpg" class="thumbnails-image">
                     <span class="thumbnails-title">plane1</span>
                 </a>
             </li>
             <li class="thumbnails-item">
-                <a class="thumbnails-anchor" href="#">
+                <a class="thumbnails-anchor" href="#" data-details-image="images/plane2.jpg"
+                data-details-title="The most clever plane">
                     <img src="images/plane2.jpg" class="thumbnails-image">
                     <span class="thumbnails-title">plane2</span>
                 </a>
             </li>
             <li class="thumbnails-item">
-                <a class="thumbnails-anchor" href="#">
+                <a class="thumbnails-anchor" href="#" data-details-image="images/plane3.jpg"
+                data-details-title="The most lazy plane">
                     <img src="images/plane3.jpg" class="thumbnails-image">
                     <span class="thumbnails-title">plane3</span>
                 </a>
             </li>
             <li class="thumbnails-item">
-                <a class="thumbnails-anchor" href="#">
+                <a class="thumbnails-anchor" href="#" data-details-image="images/plane4.jpg"
+                data-details-title="The most red plane">
                     <img src="images/plane4.jpg" class="thumbnails-image">
                     <span class="thumbnails-title">plane4</span>
                 </a>
             </li>
             <li class="thumbnails-item">
-                <a class="thumbnails-anchor" href="#">
+                <a class="thumbnails-anchor" href="#" data-details-image="images/plane5.jpg"
+                data-details-title="The most fast plane">
                     <img src="images/plane5.jpg" class="thumbnails-image">
                     <span class="thumbnails-title">plane5</span>
                 </a>
@@ -74,5 +84,6 @@
             </li>
         </ul>
     </main>
+    <script src="src/planes.js"></script>
 </body>
 </html>

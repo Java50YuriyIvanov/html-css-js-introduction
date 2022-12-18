@@ -43,12 +43,22 @@ h2 {
     justify-content: center;
     flex-grow: 1;
 }
+.main-class.hidden{
+    /* --thumbnails-image-width: 30vw;
+    --thumbnails-image-height: 20vw;
+    --thumbnails-title-height: calc(var(--details-image-height)); */
+    justify-content: space-around;
+}
 .details-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 2vh;
     position: relative;
+    transition: 5s;
+}
+.hidden .details-container{
+    display: none;
 }
 .details-image {
     width: var(--details-image-width);
@@ -64,6 +74,11 @@ h2 {
     position: absolute;
     bottom: 2vh;
     left: 2vw;
+}
+#hide-button {
+    position: absolute;
+    right: 5vw;
+    top: 5vh;
 }
 .thumbnails-list {
     display: flex;
@@ -84,6 +99,7 @@ h2 {
     min-height: calc(var(--thumbnails-image-height) + var(--thumbnails-title-height));
     min-width: var(--thumbnails-image-width);
     max-width: var(--thumbnails-image-width);
+    max-height: calc(var(--thumbnails-image-height) + var(--thumbnails-title-height));
     margin-left: 1vw;
 }
 .thumbnails-item:hover {
@@ -103,6 +119,10 @@ h2 {
     background-color: transparent;
     color: black;
     height: var(--thumbnails-title-height);
+}
+.is-point {
+    transform: scale(0.001);
+    transition: 0s;
 }
 @media (min-width: 560px) {
     body{
@@ -134,6 +154,10 @@ h2 {
         flex-wrap: nowrap;
         max-height: 80vh;
         justify-content: flex-start;
+    }
+    .hidden .thumbnails-list {
+        flex-direction: row;
+        flex-wrap: wrap;
     }
 }
 @media (min-width: 1000px) {
