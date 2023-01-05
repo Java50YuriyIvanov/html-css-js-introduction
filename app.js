@@ -1,43 +1,32 @@
-function getDigitsSum(number) {
-  if (number < 0) number *= -1;
-  let res = 0;
-  number = Math.trunc(number);
-  while (number) {
-    res = res + (number % 10);
-    number = Math.trunc(number / 10);
+let str1 = "pappy";
+let str2 = "apple";
+function coloringString(str1, str2) {
+  if (str1.length !== str2.length)
+    throw Error("ERROR! Not equal length of strings");
+  const arr1 = Array.from(str1.toLowerCase());
+  const arr2 = Array.from(str2.toLowerCase());
+  const res = arr2.map(myFunction);
+  function myFunction(item, index) {
+    if (arr1.includes(item) && item !== arr1[index]) item = "yellow";
+    else if (item == arr1[index]) item = "green";
+    else item = "red";
+    return item;
   }
   return res;
 }
-console.log(getDigitsSum(123.45));
-console.log(getDigitsSum(-280.123));
-console.log(getDigitsSum(123));
+console.log(coloringString(str1, str2));
+console.log(coloringString(str1, str1));
 
-function computeExpression(expxrStr) {
-  return eval(expxrStr);
-}
-function printAnanas() {
-  let res = "A" + "A" / "B" + "A" + "S";
+const arr1 = [1, 100, -100, 25, 1000];
 
-  console.log(res.toLowerCase());
-}
-printAnanas();
-
-console.log(computeExpression("9000 / ((10 + 20) ** 2)"));
-console.log(computeExpression("9 + 100 / 2"));
-function reverse(number) {
-  let res = "";
-  if (number < 0) {
-    number *= -1;
-    res += "-";
-  }
-  number = Math.trunc(number);
-  while (number) {
-    res = res + (number % 10);
-    number = Math.trunc(number / 10);
-  }
+function getNumbersWithDigitsAmount(digitsAmount, array) {
+  if (digitsAmount < 1) throw Error("ERROR! Not acceptable amount of digits");
+  const min = 10 ** (digitsAmount - 1);
+  const max = 10 ** digitsAmount - 1;
+  const res = array.filter(function (number) {
+    number = Math.abs(number);
+    return number >= min && number <= max;
+  });
   return res;
 }
-console.log(reverse(123.45));
-console.log(reverse(-280.123));
-console.log(reverse(123));
-console.log(reverse(-123));
+console.log(getNumbersWithDigitsAmount(3, arr1));
