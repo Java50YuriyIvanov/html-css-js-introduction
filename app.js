@@ -1,75 +1,63 @@
-const arr1 = [20, -10, 333, 1000, 552, 7, -7];
-function evenOddSort(array) {
-  array.sort(function (a, b) {
-    return (Math.abs(b) % 2) - (Math.abs(a) % 2);
+function createEmployee(id, name, birthYear, salary, city, country) {
+  return { id, name, birthYear, salary, address: { city, country } };
+}
+
+const employees = [
+  createEmployee(123, "Vasya", 2000, 15000, "Lod", "Israel"),
+  createEmployee(124, "David", 1975, 15500, "Tel Aviv", "Israel"),
+  createEmployee(125, "Sara", 1985, 20000, "New York", "USA"),
+  createEmployee(126, "Abraham", 1990, 13000, "London", "UK"),
+  createEmployee(127, "Moshe", 2000, 15000, "Rehovot", "Israel"),
+  createEmployee(128, "Goga", 1993, 10000, "Tbilisi", "Gorgia"),
+  createEmployee(129, "Sasha", 2000, 25000, "Ramat Gan", "Israel"),
+  createEmployee(130, "Victor", 2003, 10000, "Arad", "Israel"),
+];
+
+//HW #18
+// #1
+//returns reference to an Employee object with a given id value
+function getEmployee(employees, id) {
+  return employees.find(function (empl) {
+    return empl.id === id;
   });
-  return array;
 }
-console.log(evenOddSort(arr1));
+console.log(getEmployee(employees, 127));
 
-const arr2 = [20, -10, 333, 1000, 552, 7, -7];
-function oddEvenSort(array) {
-  array.sort(function (a, b) {
-    return (Math.abs(a) % 2) - (Math.abs(b) % 2);
-  });
-  return array;
-}
-console.log(oddEvenSort(arr2));
-
-const arr3 = [20, -10, 333, 1000, 552, 7, -7];
-function evenAscOddDesc(array) {
-  array.sort(function (a, b) {
-    return (Math.abs(a) % 2) - (Math.abs(b) % 2) || (a % 2 ? b - a : a - b);
-  });
-  return array;
-}
-console.log(evenAscOddDesc(arr3));
-
-const arr4 = [20, -10, 333, 1000, 552, 7, -7];
-function getMin(array) {
-  const result = array.reduce(function (res, curr) {
-    return curr < res ? curr : res;
-  });
-  return result;
-}
-console.log("************************************");
-console.log(getMin(arr4));
-
-const arr5 = [20, -10, 333, 1000, 552, 7, -7];
-function getMax(array) {
-  const result = array.reduce(function (res, curr) {
-    return curr > res ? curr : res;
-  });
-  return result;
-}
-console.log(getMax(arr5));
-
-const arr6 = [20, -10, 333, 1000, 552, 7, -7];
-function getAverage(array) {
-  const result =
-    array.reduce(function (res, curr) {
-      return res + curr;
-    }) / array.length;
-  return result;
-}
-console.log(getAverage(arr6));
-
-const arr7 = [20, -10, 333, 1000, 552, 7, -7];
-function getMinMaxAvg(array) {
-  const result = array.reduce(
-    function (res, curr) {
-      if (curr < res[0]) res[0] = curr;
-      else if (curr > res[1]) res[1] = curr;
-      res[2] += curr / array.length;
-      return res;
-    },
-    [array[0], 0, 0]
+// #2
+//returns array of Employee objects that have salary in [salaryFrom, salaryTo]
+function getEmployeesBySalary(employees, salaryFrom, salaryTo) {
+  return employees.filter(
+    (employee) => employee.salary >= salaryFrom && employee.salary <= salaryTo
   );
-  return result;
 }
-console.log("********************************");
-console.log(
-  `min value: ${getMinMaxAvg(arr7)[0]} \nmax value: ${
-    getMinMaxAvg(arr7)[1]
-  } \naverage value: ${getMinMaxAvg(arr7)[2]}`
-);
+console.log(getEmployeesBySalary(employees, 13000, 16000));
+
+// #3
+//returns array of Employee objects from a given city
+function getEmployeesByCity(employees, city) {
+  return employees.filter((employee) => employee.address.city === city);
+}
+console.log(getEmployeesByCity(employees, "Lod"));
+
+// #4
+//returns array of all Employee names
+function getEmployeeNames(employees) {
+  return employees.map((employee) => employee.name);
+}
+console.log(getEmployeeNames(employees));
+
+// #5
+//returns array of Employee objects sorted by age in ascending order
+function sortEmployeesByAge(employees) {
+  return employees.sort((a, b) => (a.birthYear < b.birthYear ? 1 : -1));
+}
+console.log(sortEmployeesByAge(employees));
+
+// #6
+//computes and returns total salary for all Employee objects
+function computeSalaryBudget(employees) {
+  return employees.reduce(function (acc, obj) {
+    return acc + obj.salary;
+  }, 0);
+}
+console.log(computeSalaryBudget(employees));
